@@ -1,0 +1,58 @@
+@keyframes rotation {
+    to {
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn);
+    }
+}
+
+@-webkit-keyframes rotation {
+    to {
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn);
+    }
+}
+
+section:hover {
+    animation: rotation 1s linear infinite;
+    -webkit-animation: rotation 1s linear infinite;
+}
+
+@mixin yin-yang($width) {
+    section {
+        margin: auto;
+        position: relative;
+        width: $width;
+        height: $width/2;
+        border-color: red;
+        border-style: solid;
+        border-width: 2px 2px $width/2 + 2px 2px;
+        border-radius: 100%;
+        background: #eee;
+    }
+
+    section:before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: $width/8;
+        height: $width/8;
+        border: 3*$width/16 solid red;
+        border-radius: 100%;
+        background: #eee;
+        content: "";
+    }
+
+    section:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: $width/8;
+        height: $width/8;
+        border: 3*$width/16 solid #eee;
+        border-radius: 100%;
+        background: red;
+        content: "";
+    }
+}
+
+@include yin-yang(160px);
